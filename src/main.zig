@@ -54,15 +54,15 @@ pub fn main() !void {
 }
 
 fn printGrid(grid: *const hello_world.sudoku.Grid) !void {
-    std.debug.print("┌───────┬───────┬───────┐\n", .{});
+    std.debug.print("+-------+-------+-------+\n", .{});
     for (0..hello_world.sudoku.SIZE) |row| {
         if (row == 3 or row == 6) {
-            std.debug.print("├───────┼───────┼───────┤\n", .{});
+            std.debug.print("+-------+-------+-------+\n", .{});
         }
-        std.debug.print("│ ", .{});
+        std.debug.print("| ", .{});
         for (0..hello_world.sudoku.SIZE) |col| {
             if (col == 3 or col == 6) {
-                std.debug.print("│ ", .{});
+                std.debug.print("| ", .{});
             }
             if (grid.cells[row][col] == 0) {
                 std.debug.print(". ", .{});
@@ -70,9 +70,9 @@ fn printGrid(grid: *const hello_world.sudoku.Grid) !void {
                 std.debug.print("{d} ", .{grid.cells[row][col]});
             }
         }
-        std.debug.print("│\n", .{});
+        std.debug.print("|\n", .{});
     }
-    std.debug.print("└───────┴───────┴───────┘\n", .{});
+    std.debug.print("+-------+-------+-------+\n", .{});
 }
 
 test "simple test" {

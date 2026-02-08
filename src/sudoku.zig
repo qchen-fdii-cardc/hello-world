@@ -48,15 +48,15 @@ pub const Grid = struct {
     }
 
     pub fn print(self: *const Grid, writer: anytype) !void {
-        try writer.writeAll("┌───────┬───────┬───────┐\n");
+        try writer.writeAll("+-------+-------+-------+\n");
         for (0..SIZE) |row| {
             if (row == 3 or row == 6) {
-                try writer.writeAll("├───────┼───────┼───────┤\n");
+                try writer.writeAll("+-------+-------+-------+\n");
             }
-            try writer.writeAll("│ ");
+            try writer.writeAll("| ");
             for (0..SIZE) |col| {
                 if (col == 3 or col == 6) {
-                    try writer.writeAll("│ ");
+                    try writer.writeAll("| ");
                 }
                 if (self.cells[row][col] == 0) {
                     try writer.writeAll(". ");
@@ -64,9 +64,9 @@ pub const Grid = struct {
                     try writer.print("{d} ", .{self.cells[row][col]});
                 }
             }
-            try writer.writeAll("│\n");
+            try writer.writeAll("|\n");
         }
-        try writer.writeAll("└───────┴───────┴───────┘\n");
+        try writer.writeAll("+-------+-------+-------+\n");
     }
 
     pub fn isEmpty(self: *const Grid, row: usize, col: usize) bool {
